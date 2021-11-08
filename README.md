@@ -1,4 +1,4 @@
-# sELKstack</p
+# sELKstack
 
 ### *"Expertish Level" install of a <br> Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (NO docker!)*
 
@@ -22,13 +22,13 @@ If you know of better practices than are used here, please feel free to comment 
 
 ## Other helpful links:
 
-https://kifarunix.com/easy-way-to-configure-filebeat-logstash-ssl-tls-connection/
-https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html
-https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup.html
-https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup-https.html
-https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html
-https://www.elastic.co/guide/en/beats/filebeat/current/configuring-ssl-logstash.html
-https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/
+- https://kifarunix.com/easy-way-to-configure-filebeat-logstash-ssl-tls-connection/
+- https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html
+- https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup.html
+- https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup-https.html
+- https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html
+- https://www.elastic.co/guide/en/beats/filebeat/current/configuring-ssl-logstash.html
+- https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/
 
 ## Before you begin:
 
