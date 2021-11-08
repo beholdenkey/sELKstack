@@ -42,7 +42,7 @@ You will do multiple search/replace substitutions and it is good practice to do 
 
 1. Search/replace "selk.mydomain.com" in the instructions with your FQDN.
 1. Search/replace "selk.local" in the instructions with your local server hostname.local.
+1. Search/replace "selkadmin" in the instructions with a unique username, and be prepared to enter its password later when requested. We will give this account sudo privileges.
 1. Search/replace "selk" in the instructions with your local server hostname.
 1. Search/replace "10.0.0.11" in the instructions with the internal IP of your ELK server local IP.
 1. Search/replace "10.0.0.10" in the instructions with the internal IP of your jump server, or if no jump server, your laptop which you alone use to access this system.
-1. Search/replace "selkadmin" in the instructions with a unique username, and be prepared to enter its password when requested. We will give this account sudo privileges.
