@@ -476,6 +476,7 @@ sudo shutdown -h now
 Note: When installing Filebeat agents which send logs to this server, you will likely encounter the issue being discussed here:
 https://discuss.elastic.co/t/index-lifecycle-error-index-lifecycle-rollover-alias-beat-version-does-not-point-to-index-issue/241029
 For now, use the workaround described at the end of this discussion, and eventually these instructions will migrate to datastreams, which apparently resolves this issue.
+This is a related link: https://www.elastic.co/guide/en/elasticsearch/reference/7.15/set-up-lifecycle-policy.html
 
 Concluding Notes:
 The iptables port redirect and the whole port 514->10514 and syslog config is still kind of experimental.
