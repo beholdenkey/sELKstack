@@ -38,7 +38,7 @@ You will do multiple search/replace substitutions and it is good practice to do 
 
 ## Ready to begin? 
 
-*Before you start, gather the following information and do the following steps in your local-editor copy of these [instructions](https://github.com/jaredatobe/sELKstack/blob/main/instructions.txt):*
+*Before you start, gather the following information and do the following steps in your local-editor copy of these [server install instructions](https://github.com/jaredatobe/sELKstack/blob/main/instructions.txt):*
 
 1. Search/replace "selk.mydomain.com" in the instructions with your FQDN.
 1. Search/replace "selk.local" in the instructions with your local server hostname.local.
