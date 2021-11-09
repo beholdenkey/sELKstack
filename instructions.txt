@@ -393,14 +393,14 @@ xpack.monitoring.elasticsearch.username: logstash_system
 xpack.monitoring.elasticsearch.password: ${logstash_system_password}
 xpack.monitoring.elasticsearch.hosts: [ 'https://selk.local:9200' ]
 xpack.monitoring.elasticsearch.ssl.certificate_authority: /etc/logstash/certs/ca/ca.crt
-curl -XPOST "https://selk.local:9200/_security/role/logstash_write_role"  -H 'Content-Type: application/json' -d'{ "cluster": [ "manage_index_templates", "monitor", "manage_ilm" ], "indices": [ { "names": [ "logstash*", "filebeat*" ], "privileges": [ "create", "write", "delete", "manage", "create_index", "manage_ilm" ] } ] }' --cacert "/etc/logstash/certs/ca/ca.crt" --user elastic
+curl -XPOST "https://selk.local:9200/_security/role/logstash_write_role"  -H 'Content-Type: application/json' -d'{ "cluster": [ "manage_index_templates", "monitor", "manage_ilm" ], "indices": [ { "names": [ "logstash*", "filebeat*", "syslog*" ], "privileges": [ "create", "write", "delete", "manage", "create_index", "manage_ilm" ] } ] }' --cacert "/etc/logstash/certs/ca/ca.crt" --user elastic
 curl -XPOST "https://selk.local:9200/_security/user/logstash_writer" -H 'Content-Type: application/json' -d'{  "password" : "bJqU9H6UT4",  "enabled": true,  "roles" : [ "logstash_write_role" ] }' --cacert "/etc/logstash/certs/ca/ca.crt" --user elastic
 
 #or, if you don't want to use command lines above, go to Stack Management, Roles, and Create Role:
 #in web UI (https://selk.mydomain.com/app/management/security/roles/edit) (login with elastic user)
 #Role name: logstash_write_role
 #Cluster privileges: manage_index_templates,monitor,manage_ilm
-#Indices: logstash* filebeat* syslog* (as a custom option)
+#Indices: logstash* filebeat* syslog* (added as custom options)
 #Privileges: create,write,delete,manage,create_index,manage_ilm
 #click [Create Role]
 #in web UI (https://selk.mydomain.com/app/management/security/users/create)
