@@ -1,6 +1,6 @@
 # sELKstack
 
-### *"Expertish Level" install of a <br> Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (NO docker!)*
+### *Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (NO docker!)*
 
 The core ELK stack installation here came from the excellent Digital Ocean documentation at https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-20-04, so go there if you need help.
 
