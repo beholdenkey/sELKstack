@@ -34,11 +34,11 @@ If you know of better practices than are used here, please feel free to comment 
 
 Copy/paste these instructions to a new text editor window. 
 
-You will do multiple search/replace substitutions and it is good practice to do all this before you start, not as you go, so there are fewer copy/paste errors. You will also do a few additional copy/paste substitutions later, for example when adding keys and generating passwords. It is a good idea to keep a copy of this information in a single, secure place.
+You will do multiple search/replace substitutions and it is good practice to do all this before you start, not as you go, so there are fewer copy/paste errors. You will also do a few additional copy/paste substitutions later, for example when adding keys and generating passwords. It is a good idea to keep a copy of this information in a single, secure place, and keeping all of this in a single file is one way to go about this.
 
 ## Ready to begin? 
 
-*Before you start, gather the following information and do the following steps in your local-editor copy of these [server install instructions](https://github.com/jaredatobe/sELKstack/blob/main/instructions.txt):*
+*Before you start, gather the following information and do the following steps in your local-editor copies of the [server install instructions](https://github.com/jaredatobe/sELKstack/blob/main/instructions.txt) and [selk install instructions](https://github.com/jaredatobe/sELKstack/blob/main/selk_install_instructions.txt):*
 
 1. Search/replace "selk.mydomain.com" in the instructions with your FQDN.
 1. Search/replace "selk.local" in the instructions with your local server hostname.local.
