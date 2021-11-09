@@ -1,0 +1,47 @@
+Use the following instructions to do the installation:
+
+https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html
+
+When it's time to run "filebeat setup," use something like the following command lines, editing as appropriate beforehand:
+
+=================================
+Configure a Windows filebeat endpoint:
+=================================
+
+filebeat.exe keystore create
+filebeat.exe keystore add elasticsearch_password
+
+filebeat.exe setup --pipelines --modules o365 system ^
+-E output.logstash.enabled=false ^
+-E output.elasticsearch.hosts="https://selk.mydomain.com:9201" ^
+-E output.elasticsearch.username="elastic" ^
+-E "output.elasticsearch.password=\${elasticsearch_password}" ^
+-E output.elasticsearch.ssl.certificate_authorities="C:/ProgramData/Secure/Filebeat/certs/cert.pem"
+
+filebeat.exe setup --index-management --modules system o365 ^
+-E output.logstash.enabled=false ^
+-E output.elasticsearch.hosts="https://selk.mydowmain.com:9201" ^
+-E output.elasticsearch.username="elastic" ^
+-E "output.elasticsearch.password=\${elasticsearch_password}" ^
+-E output.elasticsearch.ssl.certificate_authorities="C:/ProgramData/Secure/Filebeat/certs/cert.pem"
+
+=================================
+Configure Linux filebeat endpoint:
+=================================
+
+sudo filebeat keystore create
+sudo filebeat keystore add elastic_password
+
+sudo filebeat setup --index-management -E output.logstash.enabled=false 
+-E 'output.elasticsearch.hosts=["https://selk.mydowmain:9201"]' 
+-E 'output.elasticsearch.username="elastic"' 
+-E "output.elasticsearch.password=\${elasticsearch_password}" 
+-E 'output.elasticsearch.ssl.certificate_authorities=["/etc/filebeat/certs/cert.pem"]'
+
+sudo filebeat setup --pipelines --modules system apache mysql 
+-E output.logstash.enabled=false 
+-E 'output.elasticsearch.hosts=["https://selk.mydowmain.com:9201"]' 
+-E 'output.elasticsearch.username="elastic"' 
+-E "output.elasticsearch.password=\${elasticsearch_password}" 
+-E 'output.elasticsearch.ssl.certificate_authorities=["/etc/filebeat/certs/cert.pem"]'
+
