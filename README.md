@@ -18,7 +18,7 @@ If you know of better practices than are used here, please feel free to comment 
 1. You specifically want a single-node cluster. If you have multiple nodes, several config items are different; the links above and "helpful links" below go into more detail on multi-node installation.
 1. You already know which filebeat modules you want to install. Search/replace "system nginx mysql elasticsearch" with your own modules. Just use "system" if you don't know.
 1. This is designed around an entry-level **4GB Memory 80Gb Disk Ubuntu 20.04 LTS** (a basic option within Digital Ocean). Adjust accordingly. For example, if your server has more memory, you may be able to skip the SWAP steps below.
-1. For security reasons, access from the jump server to this server requires a password, but access to the jump server requires pubkey. This provides two layers of security. In case for some reason your pubkey is compromised, someone would need your server's SSH password as well, and the only way to get in to the server is via the jump box.
+1. For security reasons, access from the jump server to this server requires a password and a pubkey, but access to the jump server requires pubkey only. This provides two layers of security. In case for some reason your pubkey is compromised, someone would need your server's SSH password as well, and the only way to get in to the server is via the jump box.
 
 ## Other helpful links:
 
