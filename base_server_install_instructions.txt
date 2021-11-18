@@ -44,6 +44,7 @@ Include /etc/ssh/sshd_config.d/*.conf
 PubkeyAuthentication no
 PasswordAuthentication no
 ChallengeResponseAuthentication no
+# Eventually need to investigate PAM, according to https://vez.mrsk.me/freebsd-defaults.html
 UsePAM yes
 X11Forwarding no
 PrintMotd no
