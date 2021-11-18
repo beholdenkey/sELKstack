@@ -200,19 +200,8 @@ Install Logstash:
 =================================
 
 sudo apt -y install logstash
-#see https://discuss.elastic.co/t/pipelines-yml-ignored-on-logstash-running-as-a-service/107828/15
-sudo sed -i 's/ "--path.settings" "\/etc\/logstash"//g' /etc/systemd/system/logstash.service
-sudo systemctl daemon-reload
 sudo chmod -R 755 /etc/logstash/certs
 sudo chown -R root:logstash /etc/logstash/certs
-sudo nano /etc/logstash/pipelines.yml
-# This file is where you define your pipelines. You can define multiple.
-# For more information on multiple pipelines, see the documentation:
-# https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
-- pipeline.id: main
-  path.config: "/etc/logstash/conf.d/*.conf"
-- pipeline.id: syslog
-  path.config: "/etc/logstash/conf.d/syslog.cfg"
 sudo nano /etc/logstash/conf.d/02-beats-input.conf
 input {
   beats {
@@ -221,6 +210,14 @@ input {
     ssl_key => '/etc/filebeat/certs/privkey.pem'
     ssl_certificate => '/etc/filebeat/certs/fullchain.pem'
   }
+}
+sudo nano /etc/logstash/conf.d/03-syslog.conf
+input {
+    syslog {
+        host => "127.0.0.1"
+        port => "10514"
+        type => "syslog"
+    }
 }
 sudo nano /etc/logstash/conf.d/30-elasticsearch-output.conf
 output {
@@ -234,33 +231,25 @@ output {
       user => 'logstash_writer'
       password => 'bJqU9H6UT4'
     }
+  } else if [type] == "syslog" {
+    elasticsearch {
+      hosts => ["https://selk.local:9200"]
+      manage_template => false
+      index => "syslog-%{+YYYY.MM.dd}"
+      cacert => '/etc/logstash/certs/ca/ca.crt'
+      user => 'logstash_writer'
+      password => 'bJqU9H6UT4'
+    }
   } else {
     elasticsearch {
       hosts => ["https://selk.local:9200"]
       manage_template => false
-      index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+      index => "logstash-%{+YYYY.MM.dd}"
       cacert => '/etc/logstash/certs/ca/ca.crt'
       user => 'logstash_writer'
       password => 'bJqU9H6UT4'
     }
   }
-}
-sudo nano /etc/logstash/conf.d/syslog.cfg
-input {
-    syslog {
-        host => "127.0.0.1"
-        port => "10514"
-    }
-}
-output {
-    elasticsearch {
-        hosts => ["https://selk.local:9200"]
-        manage_template => false
-        index => "syslog-%{+YYYY.MM.dd}"
-        cacert => '/etc/logstash/certs/ca/ca.crt'
-        user => 'logstash_writer'
-        password => 'bJqU9H6UT4'
-    }
 }
 sudo apt install iptables-persistent
 #Y
@@ -273,9 +262,12 @@ sudo ufw allow in 514
 echo -e "\n#Explicitly prefer IPv4\n-Djava.net.preferIPv4Stack=true\n-Djava.net.preferIPv6Addresses=false" | sudo tee -a /etc/logstash/jvm.options
 #below, disable user history while storing logstash_system password in logstash keystore
 #before doing so, copy/paste the logstash_system password which was just created above via elasticsearch-setup-passwords
+#and change the LOGSTASH_KEYSTORE_PASS (stored in user .profile) to something unique
 set +o history
-export LOGSTASH_KEYSTORE_PASS=m9n7LnxFY2nrDDKs
-echo "LOGSTASH_KEYSTORE_PASS=m9n7LnxFY2nrDDKs" | sudo tee -a ~/.profile
+LOGSTASH_KEYSTORE_PASS=m9n7LnxFY2nrDDKs
+export LOGSTASH_KEYSTORE_PASS
+echo "LOGSTASH_KEYSTORE_PASS=m9n7LnxFY2nrDDKs" | sudo tee -a /etc/default/logstash ~/.profile > /dev/null
+echo "export LOGSTASH_KEYSTORE_PASS" | sudo tee -a ~/.profile > /dev/null
 set -o history
 sudo -E /usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash create
 sudo -E /usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash add logstash_system_password
@@ -289,7 +281,10 @@ xpack.monitoring.elasticsearch.password: ${logstash_system_password}
 xpack.monitoring.elasticsearch.hosts: [ 'https://selk.local:9200' ]
 xpack.monitoring.elasticsearch.ssl.certificate_authority: /etc/logstash/certs/ca/ca.crt
 curl -XPOST "https://selk.local:9200/_security/role/logstash_write_role"  -H 'Content-Type: application/json' -d'{ "cluster": [ "manage_index_templates", "monitor", "manage_ilm" ], "indices": [ { "names": [ "logstash*", "filebeat*", "syslog*" ], "privileges": [ "create", "write", "delete", "manage", "create_index", "manage_ilm" ] } ] }' --cacert "/etc/logstash/certs/ca/ca.crt" --user elastic
+#set logstash_writer password below to something unique
+set +o history
 curl -XPOST "https://selk.local:9200/_security/user/logstash_writer" -H 'Content-Type: application/json' -d'{  "password" : "bJqU9H6UT4",  "enabled": true,  "roles" : [ "logstash_write_role" ] }' --cacert "/etc/logstash/certs/ca/ca.crt" --user elastic
+set -o history
 
 #or, if you don't want to use command lines above, go to Stack Management, Roles, and Create Role:
 #in web UI (https://selk.mydomain.com/app/management/security/roles/edit) (login with elastic user)
@@ -306,7 +301,7 @@ curl -XPOST "https://selk.local:9200/_security/user/logstash_writer" -H 'Content
 #Email address: null
 #Roles: logstash_write_role
 
-sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+sudo -E -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
 #Config Validation Result: OK. Exiting Logstash 
 sudo chmod -R 755 /etc/filebeat/certs
 sudo ufw allow in 5044
