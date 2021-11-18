@@ -2,13 +2,13 @@
 
 ### *Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (NO docker!)*
 
-This will eventually be turned into a proper How-To, with notes in between steps to explain what's happening, but for now it's pretty dense.
+This will eventually be turned into a proper How-To, with notes in between steps to explain what's happening, but for now it's pretty dense. The intended goal is to get this all working on Debian someday.
 
-The core ELK stack installation here came from the excellent Digital Ocean documentation at https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-20-04, so go there if you need help.
+The core ELK stack installation here came from the excellent Digital Ocean documentation at https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-20-04, so go there if you need help. 
 
 The secured ELK stack install content came from the excellent Elastic documentation at https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash so go there if you need help.
 
-Any differences from the approach used in these two documents have been tested numerous times in the process of getting this all working smoothly. For example, the clever solution to allow logstash to listen on 127.0.0.1:10514 which is redirected under the hood by iptables from port 0.0.0.0:514 is too rare -- more people should be using this method to listen to ports below 1024 without root privileges; it took hours to find by prowling the dark recesses of Stack Exchange, but here it is for you to enjoy.
+Although more compact, these instructions fill in some gaps in those. Any differences from the approach used in these two documents have been tested numerous times in the process of getting this all working smoothly. For example, the clever solution to allow logstash to listen on 127.0.0.1:10514 which is redirected under the hood by iptables from port 0.0.0.0:514 is too rare -- more people should be using this method to listen to ports below 1024 without root privileges; it took hours to find by prowling the dark recesses of Stack Exchange, but here it is for you to enjoy.
 
 If you know of better practices than are used here, please feel free to comment and make this better for all.
 
@@ -36,7 +36,7 @@ If you know of better practices than are used here, please feel free to comment 
 
 Copy/paste these instructions to a new text editor window. 
 
-You will do multiple search/replace substitutions and it is good practice to do all this before you start, not as you go, so there are fewer copy/paste errors. You will also do a few additional copy/paste substitutions later, for example when adding keys and generating passwords. It is a good idea to keep a copy of this information in a single, secure place, and keeping all of this in a single file is one way to go about this.
+You will do multiple search/replace substitutions and it is good practice to do all this before you start, not as you go, so there are fewer copy/paste errors. You will also do a few additional copy/paste substitutions later, for example when adding keys and generating passwords. It is a good idea to keep this information in a single, secure place.
 
 ## Ready to begin? 
 
@@ -48,3 +48,4 @@ You will do multiple search/replace substitutions and it is good practice to do 
 1. Search/replace "selk" in the instructions with your local server hostname.
 1. Search/replace "10.0.0.11" in the instructions with the internal IP of your ELK server local IP.
 1. Search/replace "10.0.0.10" in the instructions with the internal IP of your jump server, or if no jump server, your laptop which you alone use to access this system.
+1. Be ready with a password vault to generate new passwords and store generated passwords throughout this process, there are nearly a dozen involved.
