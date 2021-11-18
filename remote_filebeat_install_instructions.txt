@@ -45,3 +45,15 @@ sudo filebeat setup --pipelines --modules system apache mysql
 -E "output.elasticsearch.password=\${elasticsearch_password}" 
 -E 'output.elasticsearch.ssl.certificate_authorities=["/etc/filebeat/certs/cert.pem"]'
 
+=================================
+Keep filebeat at same version during system-wide apt upgrades, til you update it manually
+=================================
+
+Hold apt package:
+sudo apt-mark hold filebeat
+
+Remove the hold:
+sudo apt-mark unhold filebeat
+
+Show all packages on hold:
+sudo apt-mark showhold
