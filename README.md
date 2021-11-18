@@ -2,11 +2,13 @@
 
 ### *Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (NO docker!)*
 
+This will eventually be turned into a proper How-To, with notes in between steps to explain what's happening, but for now it's pretty dense.
+
 The core ELK stack installation here came from the excellent Digital Ocean documentation at https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-20-04, so go there if you need help.
 
-The secured ELK stack install content came from the excellent Elastic documentation at https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash
+The secured ELK stack install content came from the excellent Elastic documentation at https://www.elastic.co/blog/configuring-ssl-tls-and-https-to-secure-elasticsearch-kibana-beats-and-logstash so go there if you need help.
 
-Any differences from the approach used in these two documents have been tested numerous times in the process of getting this all working smoothly.
+Any differences from the approach used in these two documents have been tested numerous times in the process of getting this all working smoothly. For example, the clever solution to allow logstash to listen on 127.0.0.1:10514 which is redirected under the hood by iptables from port 0.0.0.0:514 is too rare -- more people should be using this method to listen to ports below 1024 without root privileges; it took hours to find by prowling the dark recesses of Stack Exchange, but here it is for you to enjoy.
 
 If you know of better practices than are used here, please feel free to comment and make this better for all.
 
