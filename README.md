@@ -12,6 +12,14 @@ Although more compact, these instructions fill in some gaps in those. Any differ
 
 If you know of better practices than are used here, please feel free to comment and make this better for all.
 
+Note, the following ports are opened externally by these install instructions, and other internal ports are opened by various ELK components:
+
+- OpenSSH (port 22)
+- Nginx Full (port 80 redirecting to 443, reverse proxied to internal kibana 5601)
+- 514 (syslog unencrypted to internal 10514)
+- 5044 (logstash encrypted)
+- 9201 (encrypted connection to internal elasticsearch 9200 via nginx)
+
 ## Assumptions:
 
 1. You have installed ELK stack at least once before and you want a quick cheatsheet, or else you're quite comfortable with Linux and can figure out cryptic notes. This version is extremely concise, and you will need familiarity with the process to figure out certain steps.
@@ -21,6 +29,7 @@ If you know of better practices than are used here, please feel free to comment 
 1. You already know which filebeat modules you want to install. Search/replace "system nginx mysql elasticsearch" with your own modules. Just use "system" if you don't know.
 1. This is designed around an entry-level **4GB Memory 80Gb Disk Ubuntu 20.04 LTS** (a basic option within Digital Ocean). Adjust accordingly. For example, if your server has more memory, you may be able to skip the SWAP steps below.
 1. For security reasons, access from the jump server to this server requires a password and a pubkey, but access to the jump server requires pubkey only. This provides two layers of security. In case for some reason your pubkey is compromised, someone would need your server's SSH password as well, and the only way to get in to the server is via the jump box.
+1. You're familiar with LetsEncrypt, we use their certificates in several places
 
 ## Other helpful links:
 
@@ -47,5 +56,6 @@ You will do multiple search/replace substitutions and it is good practice to do 
 1. Search/replace "selkadmin" in the instructions with a unique username, and be prepared to enter its password later when requested. We will give this account sudo privileges.
 1. Search/replace "selk" in the instructions with your local server hostname.
 1. Search/replace "10.0.0.11" in the instructions with the internal IP of your ELK server local IP.
+1. Search/replace "100.100.100.100" in the instructions with the external IP of your ELK server.
 1. Search/replace "10.0.0.10" in the instructions with the internal IP of your jump server, or if no jump server, your laptop which you alone use to access this system.
 1. Be ready with a password vault to generate new passwords and store generated passwords throughout this process, there are nearly a dozen involved.
