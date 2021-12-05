@@ -1,12 +1,19 @@
 # sELKstack
 
 - [sELKstack](#selkstack)
+  - [To-Do List](#to-do-list)
   - [*Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (without using docker)*](#single-node-selk-stack-secured-elk-on-a-fresh-ubuntu-2004-without-using-docker)
   - [Assumptions for this version](#assumptions-for-this-version)
   - [Before you begin](#before-you-begin)
   - [Ready to begin?](#ready-to-begin)
-  - [To-Do List](#to-do-list)
   - [References](#references)
+
+## To-Do List
+
+- [ ] Convert instructions to interactive shell script
+- [ ] Create Step By Step Instructions
+- [ ] Create ci pipeline for testing new configurations
+- [ ] Add ssh-keygen instructions and commands to script
 
 ## *Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (without using docker)*
 
@@ -55,13 +62,6 @@ Copy/paste these instructions (both files) to a new text editor window, one righ
 1. Search/replace "100.100.100.100" in the instructions with the external IP of your ELK server.
 1. Search/replace "10.0.0.10" in the instructions with the internal IP of your jump server (or if no jump server, external IP of your laptop which you alone use to access this system).
 1. Be ready with a password vault to generate new passwords and store generated passwords throughout this process, there are nearly a dozen involved.
-
-## To-Do List
-
-- [ ] Convert instructions to interactive shell script
-- [ ] Create Step By Step Instructions
-- [ ] Create ci pipeline for testing new configurations
-- [ ] Add ssh-keygen instructions and commands to script
 
 ## References
 
