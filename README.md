@@ -3,7 +3,6 @@
 - [sELKstack](#selkstack)
   - [*Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (without using docker)*](#single-node-selk-stack-secured-elk-on-a-fresh-ubuntu-2004-without-using-docker)
   - [Assumptions for this version](#assumptions-for-this-version)
-  - [Other helpful links](#other-helpful-links)
   - [Before you begin](#before-you-begin)
   - [Ready to begin?](#ready-to-begin)
   - [To-Do List](#to-do-list)
@@ -40,16 +39,6 @@ Note, the following ports are opened externally by these install instructions, a
 7. For security reasons, access from the jump server to this server requires a password and a pubkey, but access to the jump server requires pubkey only. This approach provides two layers of security. If for some reason your pubkey is compromised, someone would still need your server's SSH password, and by using these instructions, the only way to get in to the server is via the jump box.
 8. You're familiar with how to use LetsEncrypt, as we use their certificates in several places
 
-## Other helpful links
-
-- <https://kifarunix.com/easy-way-to-configure-filebeat-logstash-ssl-tls-connection/>
-- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html>
-- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup.html>
-- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup-https.html>
-- <https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html>
-- <https://www.elastic.co/guide/en/beats/filebeat/current/configuring-ssl-logstash.html>
-- <https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/>
-
 ## Before you begin
 
 Copy/paste these instructions (both files) to a new text editor window, one right after the other. (You will do multiple search/replace substitutions). Do this once before you start, not as you go, so there are fewer copy/paste errors. Note, you will also do a few additional copy/paste substitutions later, for example when adding keys and generating passwords.
@@ -77,3 +66,11 @@ Copy/paste these instructions (both files) to a new text editor window, one righ
 ## References
 
 - [Generate ssh keys on linux](https://linuxhint.com/generate-ssh-keys-on-linux)
+
+- <https://kifarunix.com/easy-way-to-configure-filebeat-logstash-ssl-tls-connection/>
+- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html>
+- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup.html>
+- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup-https.html>
+- <https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html>
+- <https://www.elastic.co/guide/en/beats/filebeat/current/configuring-ssl-logstash.html>
+- <https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/>
