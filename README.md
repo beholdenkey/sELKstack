@@ -1,5 +1,14 @@
 # sELKstack
 
+- [sELKstack](#selkstack)
+  - [*Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (without using docker)*](#single-node-selk-stack-secured-elk-on-a-fresh-ubuntu-2004-without-using-docker)
+  - [Assumptions for this version](#assumptions-for-this-version)
+  - [Other helpful links](#other-helpful-links)
+  - [Before you begin](#before-you-begin)
+  - [Ready to begin?](#ready-to-begin)
+  - [To-Do List](#to-do-list)
+  - [References](#references)
+
 ## *Single-Node SELK stack (Secured ELK) on a fresh Ubuntu 20.04 (without using docker)*
 
 Eventually, this will be a more detailed How-To, with notes in-between steps to explain what's happening, but for now, it's pretty dense. The eventual goal is to get this all working on Debian someday for better security, but for now, it's Ubuntu.
