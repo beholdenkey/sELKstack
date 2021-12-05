@@ -66,11 +66,10 @@ Copy/paste these instructions (both files) to a new text editor window, one righ
 ## References
 
 - [Generate ssh keys on linux](https://linuxhint.com/generate-ssh-keys-on-linux)
-
-- <https://kifarunix.com/easy-way-to-configure-filebeat-logstash-ssl-tls-connection/>
-- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html>
-- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup.html>
-- <https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup-https.html>
-- <https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html>
-- <https://www.elastic.co/guide/en/beats/filebeat/current/configuring-ssl-logstash.html>
-- <https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/>
+- [Easy way to configure Filebeat-Logstash SSL/TLS Connection](https://kifarunix.com/easy-way-to-configure-filebeat-logstash-ssl-tls-connection/)
+- [Set up minimum security for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html#security-minimal-setup)
+- [Set up basic Security for Elastic Stack](https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup.html)
+- [Set up Basic security for Elastic Stack plus secured HTTPS traffic](https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-basic-setup-https.html)
+- [Securing Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html)
+- [Configuring SSL Logstash](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-ssl-logstash.html)
+- [How to prevent systemd service start operation from timing out](https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/)
